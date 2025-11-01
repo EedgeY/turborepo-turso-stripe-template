@@ -119,6 +119,8 @@ stripe trigger checkout.session.completed
 
 ### 4. OAuth設定（オプション）
 
+> 📚 **詳細なガイド**: [docs/OAUTH_SETUP.md](./docs/OAUTH_SETUP.md) でより詳しい設定手順とトラブルシューティングを確認できます。
+
 #### Google OAuth
 
 1. [Google Cloud Console](https://console.cloud.google.com/)にアクセス

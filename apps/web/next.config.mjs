@@ -6,6 +6,9 @@ const nextConfig = {
     '@workspace/db',
     '@workspace/stripe',
   ],
+  images: {
+    domains: ['localhost', 'lh3.googleusercontent.com'],
+  },
 };
 
 export default nextConfig;

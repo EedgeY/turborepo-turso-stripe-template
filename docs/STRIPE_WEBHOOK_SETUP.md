@@ -158,3 +158,4 @@ sqlite3 local.db "SELECT * FROM subscriptions;"
 
 詳細なデバッグ情報が必要な場合は、`apps/web/app/api/stripe/webhook/route.ts`にさらにログを追加してください。
 
+

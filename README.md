@@ -132,6 +132,8 @@ pnpm db:push
 
 ### 6. OAuth設定（オプション）
 
+詳細な手順は [docs/OAUTH_SETUP.md](./docs/OAUTH_SETUP.md) を参照してください。
+
 **Google:**
 1. [Google Cloud Console](https://console.cloud.google.com/)でプロジェクト作成
 2. OAuth 2.0クライアントIDを作成
@@ -140,6 +142,8 @@ pnpm db:push
 **GitHub:**
 1. [GitHub Settings](https://github.com/settings/developers)でOAuth Appを作成
 2. Authorization callback URLに `http://localhost:3000/api/auth/callback/github` を設定
+
+> 💡 **重要**: サインアップページとサインインページの両方でGoogle/GitHub認証が利用可能です。
 
 ## 開発
 

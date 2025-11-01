@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+import { headers, cookies } from 'next/headers';
 import { auth } from '@workspace/auth';
 import { db } from '@workspace/db/client';
 import {
@@ -13,6 +13,9 @@ import { eq, desc, and } from 'drizzle-orm';
 import { Button } from '@workspace/ui/components/button';
 import Link from 'next/link';
 import { ChangePlanButton } from './_components/change-plan-button';
+import { SignOutButton } from './_components/sign-out-button';
+import { AvatarUploader } from './_components/avatar-uploader';
+import Image from 'next/image';
 
 async function getSession() {
   const headersList = await headers();
@@ -94,6 +97,8 @@ export default async function DashboardPage() {
   const userSubscriptions = await getUserSubscriptions(session.user.id);
   const userPayments = await getUserPayments(session.user.id);
   const availablePlans = await getAvailableSubscriptionPlans();
+  const cookieStore = await cookies();
+  const csrfToken = cookieStore.get('csrf_token')?.value ?? '';
 
   return (
     <div className='min-h-screen bg-background'>
@@ -104,11 +109,7 @@ export default async function DashboardPage() {
             <Link href='/pricing'>
               <Button variant='outline'>料金プラン</Button>
             </Link>
-            <form action='/api/auth/sign-out' method='POST'>
-              <Button variant='ghost' type='submit'>
-                サインアウト
-              </Button>
-            </form>
+            <SignOutButton />
           </div>
         </div>
       </header>
@@ -119,6 +120,13 @@ export default async function DashboardPage() {
           <section className='bg-card rounded-lg border p-6'>
             <h2 className='text-xl font-semibold mb-4'>アカウント情報</h2>
             <div className='space-y-2'>
+              <Image
+                src={userData?.image || '/images/default-user.png'}
+                alt={userData?.name || 'User Image'}
+                width={100}
+                height={100}
+              />
+              <AvatarUploader />
               <p>
                 <span className='font-medium'>名前:</span> {userData?.name}
               </p>
@@ -135,6 +143,7 @@ export default async function DashboardPage() {
               <h2 className='text-xl font-semibold'>サブスクリプション</h2>
               {userData?.stripeCustomerId && (
                 <form action='/api/stripe/portal' method='POST'>
+                  <input type='hidden' name='_csrf' value={csrfToken} />
                   <Button variant='outline' type='submit'>
                     サブスクリプション管理
                   </Button>

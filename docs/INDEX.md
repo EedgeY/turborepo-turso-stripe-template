@@ -8,6 +8,15 @@
 - **[README.md](../README.md)** - プロジェクト概要と基本的な使い方
 - **[SETUP.md](../SETUP.md)** - 詳細なセットアップ手順
 
+## 認証
+
+- **[OAUTH_SETUP.md](./OAUTH_SETUP.md)** - Google/GitHub OAuth認証の設定手順
+  - OAuth同意画面の設定
+  - 認証情報の作成
+  - 環境変数の設定
+  - トラブルシューティング
+  - セキュリティのベストプラクティス
+
 ## Stripe決済
 
 - **[STRIPE_SETUP.md](../STRIPE_SETUP.md)** - Stripe設定の詳細手順

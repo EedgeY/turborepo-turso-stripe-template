@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
   try {
     // CSRF対策: 同一オリジン検証とCSRFトークン検証
     assertSameOrigin(request);
-    assertCsrf(request);
+    await assertCsrf(request);
 
     // セッション取得
     const session = await auth.api.getSession({ headers: request.headers });
