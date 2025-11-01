@@ -34,3 +34,8 @@ npm-debug.log*
 # Misc
 .DS_Store
 *.pem
+
+# Local SQLite database
+local.db
+local.db-shm
+local.db-wal
