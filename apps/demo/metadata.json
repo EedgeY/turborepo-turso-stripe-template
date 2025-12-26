@@ -1,0 +1,5 @@
+{
+  "name": "ShiftFlow",
+  "description": "A smart shift management SaaS with auto-generation, locking mechanisms, and AI-powered insights.",
+  "requestFramePermissions": []
+}
